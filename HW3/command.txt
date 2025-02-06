@@ -1,0 +1,44 @@
+mkdir test && cd test
+cp ../Testcase/Function/1.c .
+cp ../Qemu/assembly/main.c .
+
+#用於產生範例
+riscv32-unknown-elf-gcc -S -c -O0 -DHIGH=1 -DLOW=0 0.c -o codegen.S
+
+./codegen <Testcase/Testcases_for_T1_Board/Basic/0.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/ArithmeticExpression/0.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/ArithmeticExpression/1.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/Pointer/0.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/Pointer/1.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/Jump/0.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/Jump/1.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/Function/0.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <Testcase/Testcases_for_T1_Board/Function/1.c
+riscv32-unknown-elf-gcc main.c codegen.S
+qemu-riscv32 a.out
+
+./codegen <HW3_Bonus/testcase.c

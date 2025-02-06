@@ -1,0 +1,54 @@
+golden_parser < test.c >test0.txt
+./parser < test.c >test0_me.txt
+diff test0.txt test0_me.txt
+
+golden_parser < array_decl_wo_init.txt >test1.txt
+./parser < array_decl_wo_init.txt >test1_me.txt
+diff test1.txt test1_me.txt
+
+golden_parser < expr_1.txt >test2.txt
+./parser < expr_1.txt >test2_me.txt
+diff test2.txt test2_me.txt
+
+golden_parser < func_decl.txt >test3.txt
+./parser < func_decl.txt >test3_me.txt
+diff test3.txt test3_me.txt
+
+golden_parser < scalar_decl_wo_init.txt >test4.txt
+./parser < scalar_decl_wo_init.txt >test4_me.txt
+diff test4.txt test4_me.txt
+
+
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+1));
+ strcpy(s,$1); $$=s; free($1)}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+1));
+ strcpy(s,$1);strcat(s,$2); $$=s; free($1); free($2);}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+1));
+ strcpy(s,$1);strcat(s,$2);strcat(s,$3); $$=s; free($1); free($2);free($3);}
+
+{ char*s = malloc(sizeof(char)*(strlen(c1)+strlen($1)+strlen(c2)+1));
+ strcpy(s,c1);strcat(s,$1);strcat(s,c2); $$=s; free($1);}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+strlen($4)+1));
+ strcpy(s,$1);strcat(s,$2);strcat(s,$3); strcat(s,$4); $$=s; free($1); free($2);free($3);free($4);}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+strlen($4)+strlen($5)+1));
+ strcpy(s,$1);strcat(s,$2);strcat(s,$3); strcat(s,$4);strcat(s,$5); $$=s; free($1); free($2);free($3);free($4);free($5);}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+strlen($4)+strlen($5)+strlen($6)+1));
+ strcpy(s,$1);strcat(s,$2);strcat(s,$3); strcat(s,$4);strcat(s,$5);strcat(s,$6); $$=s; free($1); free($2);free($3);free($4);free($5);free($6);}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+strlen($4)+strlen($5)+strlen($6)+strlen($7)+1));
+ strcpy(s,$1);strcat(s,$2);strcat(s,$3); strcat(s,$4);strcat(s,$5);strcat(s,$6);strcat(s,$7); $$=s; free($1); free($2);free($3);free($4);free($5);free($6);free($7);}
+
+{ char*s = malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+strlen($4)+strlen($5)+strlen($6)+strlen($7)+strlen($8)+strlen($9)+1));
+ strcpy(s,$1);strcat(s,$2);strcat(s,$3); strcat(s,$4);strcat(s,$5);strcat(s,$6);strcat(s,$7);strcat(s,$8);strcat(s,$9); $$=s; free($1); free($2);free($3);free($4);free($5);free($6);free($7);free($8);free($9);}
+
+
+ char*s = malloc(sizeof(char)*(10000));
+ strcpy(s,$1); $$=s; free($1); free(s);
+
+ {char *s = malloc(sizeof(char)*(2));; strcpy(s,"");$$ = s;}

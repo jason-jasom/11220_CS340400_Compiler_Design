@@ -1,0 +1,24 @@
+make clean
+make scanner
+
+./scanner < test.c
+./scanner < op_punc.txt
+./scanner < macro.txt
+./scanner < key_ident.txt
+
+golden_scanner < test.c
+golden_scanner < op_punc.txt
+golden_scanner < macro.txt
+golden_scanner < key_ident.txt
+
+diff <(golden_scanner < key_ident.txt) <(./scanner < key_ident.txt)
+diff <(golden_scanner < op_punc.txt) <(./scanner < op_punc.txt)
+diff <(golden_scanner < macro.txt) <(./scanner < macro.txt)
+diff <(golden_scanner < test.c) <(./scanner < test.c)
+dos2unix test.c
+
+rm -f midterm
+rm -f lex.yy.c
+flex midterm.l
+gcc -o midterm lex.yy.c -lfl
+./midterm < test.txt

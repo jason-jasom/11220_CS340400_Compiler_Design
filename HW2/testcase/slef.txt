@@ -1,0 +1,74 @@
+const signed int a[f];
+unsigned long long b[2][3];
+const unsigned short c[4][5][6];
+unsigned long d[7][8];
+const unsigned char e[9][10];
+float f[11];
+const double g[12][13][14][15];
+const float i[16][17][18], j[19] = {{1,2.0,3},{12,67,6}}, k[20][21] = {{1,2.567893,3},{12,67,6}}, l[22][23][24];
+short m[25][26], n[27], o[28][29][30];
+
+int a = 1;
+int b = 2 + 3;
+int c = 4 + 5 * 6;
+int d = (7 - 8) / 9;
+int e = ++f;
+int g = h--;
+int i = - 10;
+int j = -k;
+int l = m();
+int n = o(p, 11, r[12][13]);
+int s = *t % 14;
+int u = &v + 15;
+int w = *(short)(16 / *x);
+
+void a();
+const signed long long b(float c);
+unsigned * d(double * e, signed char f);
+signed short * g();
+void * h(const int * i, const j);
+
+const signed int a;
+unsigned long long b;
+const short c;
+unsigned long * d;
+const unsigned char e;
+float f;
+const double g;
+void * h;
+const float i, *j, *k, l;
+short m, n, o;
+
+int main(void *a){
+  return;
+  return 0;
+  continue;
+  for (;;){}
+  for (i;;++j){
+    while(1){
+      int l = m[1][45][a[4]](a=h);
+    }
+    do 1; while (384);
+  }
+  1;
+  if (12+12){
+    if('j'=="dofj"){}
+  }else{
+    const signed int a;
+    unsigned long long b;
+    const short c;
+    unsigned long * d;
+    const unsigned char e;
+    break;
+  }
+  switch(NULL){
+
+  }
+  switch(48763){
+    case "kirito":
+    default : {
+      do d = (a[795] - ++a) / 9; while (384);
+    }
+      
+  }
+}
